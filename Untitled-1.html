@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Background with Glowing Image & Music</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark shade */
+        }
+
+        /* Background Wrapper */
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        /* YouTube Video Background */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            filter: blur(0.5px);/* Prevent user interaction */
+        }
+
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* Maintain 16:9 aspect ratio */
+            min-height: 110vh; /* Increase height */
+            min-width: 195vh;
+            transform: translate(-50%, -50%) scale(1.2); /* Zoom effect */
+            pointer-events: none; 
+        }
+
+        /* Dark Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark shade */
+        }
+
+        /* Glowing Image (Top Center) */
+        .glowing-image {
+            position: absolute;
+            top: 25%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%);
+            width: 200px; /* Adjust size */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8); /* Glow effect */
+        }
+
+        /* Audio Styling */
+        .audio-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .book-now {
+            position: absolute;
+            bottom: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px 24px;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff4500; /* Vibrant Orange */
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .book-now:hover {
+            background-color: #ff6347; /* Lighter Orange */
+            box-shadow: 0 0 15px rgba(255, 99, 71, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-wrapper">
+        <!-- YouTube Video Background -->
+        <div class="video-background">
+            <iframe 
+    width="935" 
+    height="526" 
+    src="https://www.youtube.com/embed/vLWsh36OwMM?autoplay=1&mute=0&loop=1&playlist=vLWsh36OwMM&controls=0&showinfo=0&modestbranding=1" 
+    title="PREMAM - Celebrating 5 Years" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+</iframe>
+
+
+        </div>
+        <div class="overlay"></div>
+        
+        <div class="overlay"></div> <!-- Dark overlay -->
+    </div>
+
+    <!-- Glowing Image (Top Center) -->
+    <img class="glowing-image" src="./MV5BNWJiMWMxYmMtNTQxMy00ZjE2LWEzYTAtNTdmODI4MGI4OTRlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Glowing Image">
+
+    <!-- Background Music -->
+    <div class="audio-container">
+        <audio id="background-music" controls>
+            <source src="./Red Velvet  Premam - Malayalam Movie OST Ft Govind Menon  Nivin Pauly  Rajesh Murugesan Official.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <button class="book-now">Book Now</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('background-music');
+        
+            // Enable autoplay and loop
+            audio.loop = true; // Ensures the audio loops
+            audio.volume = 0.25; // Set volume to 50%
+        
+            // Try playing automatically
+            audio.play().catch(() => {
+                // If autoplay is blocked, wait for user interaction
+                document.body.addEventListener('click', () => {
+                    audio.play();
+                }, { once: true });
+            });
+        });
+        
+    </script>
+</body>
+</html>
