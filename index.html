@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Background with Glowing Image & Music</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="scriptsheet" href="index.js">
+    
+    
+</head>
+<body>
+    
+    <div class="background-wrapper">
+        <!-- YouTube Video Background -->
+        <div class="video-background">
+            <iframe 
+    width="935" 
+    height="526" 
+    src="https://www.youtube.com/embed/vLWsh36OwMM?autoplay=1&mute=0&loop=0&controls=0&showinfo=0&modestbranding=1" 
+    title="PREMAM - Celebrating 5 Years" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+</iframe>
+
+
+        </div>
+        <div class="overlay"></div>
+        
+        <div class="overlay"></div> <!-- Dark overlay -->
+    </div>
+
+    <!-- Glowing Image (Top Center) -->
+    <img class="glowing-image" src="./MV5BNWJiMWMxYmMtNTQxMy00ZjE2LWEzYTAtNTdmODI4MGI4OTRlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Glowing Image">
+<!-- Movie Title -->
+<div class="movie-title">Premam</div>
+
+<!-- IMDb Rating -->
+<div class="rating">
+    ⭐ 8.3/10 <span>(IMDb)</span>
+</div>
+
+<!-- Movie Description -->
+<div class="description">
+    <strong><h2>Venue</h2></strong><br>
+    Shanon Hall || Date 29-03-2025
+</div>
+    <!-- Background Music -->
+    <div class="audio-container">
+        <audio id="background-music" controls>
+            <source src="./Red Velvet  Premam - Malayalam Movie OST Ft Govind Menon  Nivin Pauly  Rajesh Murugesan Official.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <button class="book-now">Book Now</button>
+    
+
+    
+</body>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('background-music');
+    
+        // Enable autoplay and loop
+        audio.loop = true; // Ensures the audio loops
+        audio.volume = 0.25; // Set volume to 50%
+    
+        // Try playing automatically
+        audio.play().catch(() => {
+            // If autoplay is blocked, wait for user interaction
+            document.body.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    });
+    
+
+</script>
+</html>
